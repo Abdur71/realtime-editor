@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TeamSync Editor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-people-arrows"></i> TeamSync Editor</h1>
+    <div id="presence"><i class="fas fa-users"></i> Active users: 0</div>
+    <label class="theme-toggle">
+  <input type="checkbox" id="darkToggle" />
+  <span class="slider"></span>
+</label>
+  </header>
+
+  <div id="toolbar">
+    <div class="group">
+      <button onclick="format('bold')" title="Bold"><i class="fas fa-bold"></i></button>
+      <button onclick="format('italic')" title="Italic"><i class="fas fa-italic"></i></button>
+      <button onclick="format('underline')" title="Underline"><i class="fas fa-underline"></i></button>
+      <button onclick="format('strikeThrough')" title="Strikethrough"><i class="fas fa-strikethrough"></i></button>
+    </div>
+    <div class="group">
+      <select onchange="format('heading', this.value)" title="Heading Style">
+        <option value="">Normal</option>
+        <option value="h1">Heading 1</option>
+        <option value="h2">Heading 2</option>
+        <option value="h3">Heading 3</option>
+      </select>
+      <button onclick="format('insertOrderedList')" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+      <button onclick="format('insertUnorderedList')" title="Bulleted List"><i class="fas fa-list-ul"></i></button>
+      <button onclick="format('justifyLeft')" title="Align Left"><i class="fas fa-align-left"></i></button>
+      <button onclick="format('justifyCenter')" title="Align Center"><i class="fas fa-align-center"></i></button>
+      <button onclick="format('justifyRight')" title="Align Right"><i class="fas fa-align-right"></i></button>
+    </div>
+    <div class="group">
+      <button onclick="insertImage()" title="Insert Image"><i class="fas fa-image"></i></button>
+      <button onclick="insertTable()" title="Insert Table"><i class="fas fa-table"></i></button>
+      <button onclick="addComment()" title="Add Comment"><i class="fas fa-comment-dots"></i></button>
+      <button onclick="insertLink()" title="Insert Link"><i class="fas fa-link"></i></button>
+    </div>
+  </div>
+
+  <main>
+    <aside id="sidebar">
+      <h3><i class="fas fa-clock-rotate-left"></i> Version History</h3>
+      <div id="versions"></div>
+    </aside>
+
+    <section id="editor-section">
+      <div id="editor" contenteditable="true" placeholder="Start typing your document..."></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><i class="fas fa-save"></i> Auto-save enabled | Last saved: <span id="last-saved">just now</span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+/* --- Base layout --- */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: #f3f5f9;
+  color: #222;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header --- */
+header {
+  background: linear-gradient(90deg, #004aad, #0074f0);
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+#presence {
+  background: rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* --- Toolbar --- */
+#toolbar {
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+#toolbar .group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fb;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+#toolbar button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+#toolbar button:hover {
+  background: #e0e7ff;
+  color: #004aad;
+  transform: scale(1.1);
+}
+
+#toolbar select {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* --- Main Layout --- */
+main {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 140px);
+  overflow: hidden;
+}
+
+/* --- Sidebar --- */
+#sidebar {
+  width: 280px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding: 15px;
+  overflow-y: auto;
+  box-shadow: inset -1px 0 0 #f0f0f0;
+}
+
+#sidebar h3 {
+  font-size: 1rem;
+  color: #004aad;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#versions div {
+  background: #f5f7fa;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+}
+
+#versions div:hover {
+  background: #dfe8ff;
+}
+
+#versions button {
+  margin-top: 6px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: #0074f0;
+  color: white;
+  cursor: pointer;
+}
+
+#versions button:hover {
+  background: #005ec2;
+}
+
+/* --- Editor --- */
+#editor-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#editor {
+  flex: 1;
+  border: 1px solid #ccc;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#editor:focus {
+  outline: 2px solid #004aad;
+}
+
+#editor[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #aaa;
+  pointer-events: none;
+}
+
+/* --- Footer --- */
+footer {
+  background: #f1f3f6;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: right;
+  border-top: 1px solid #ddd;
+  color: #333;
+}
+
+footer i {
+  color: #0074f0;
+  margin-right: 5px;
+}
+
+/* --- Styled Table --- */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.styled-table td, .styled-table th {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.styled-table tr:hover {
+  background-color: #e0e7ff;
+}
+
+/* --- Dark Mode Toggle --- */
+.theme-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 20px;
+}
+
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #0074f0;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* --- Dark Mode Styles --- */
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark header {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+body.dark #toolbar,
+body.dark #sidebar,
+body.dark #editor,
+body.dark footer {
+  background-color: #1e1e1e;
+  color: #ddd;
+  border-color: #333;
+}
+
+body.dark #editor {
+  box-shadow: none;
+}
+
+body.dark .styled-table td,
+body.dark .styled-table th {
+  border-color: #444;
+}
+
+body.dark .styled-table tr:nth-child(even) {
+  background-color: #1a1a1a;
+}
+
+body.dark .styled-table tr:hover {
+  background-color: #2a2a2a;
+}
